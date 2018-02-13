@@ -1,0 +1,42 @@
+// Start with assigning color names to specific hex values.
+// $white:  #fff !default;
+// $black:  #000 !default;
+// $red:    #d9534f !default;
+// $orange: #f0ad4e !default;
+// $yellow: #ffd500 !default;
+// $green:  #096a09 !default;
+// $blue:   #3c4d5e !default;
+// $teal:   #5bc0de !default;
+// $pink:   #ff5b77 !default;
+// $purple: #613d7c !default;
+
+
+// Reassign color vars to semantic color scheme
+$brand-primary:             #f483d5;
+// $brand-success:             $green !default;
+// $brand-info:                $teal !default;
+// $brand-warning:             $orange !default;
+// $brand-danger:              $red !default;
+// $brand-inverse:             $gray-dark !default;
+
+$body-bg:       #e4d9e5;
+$body-color:    #5f134b;
+$color-less-focus: lighten($body-color, 52%) !default;
+
+$stripe-bg: #ede7ec;
+
+$box-bg: #fff9fe;
+$tab-inactive-bg: #f6def3;
+$award-bg: darken($box-bg, 2%) !default;
+
+$btn-primary-bg:  $brand-primary;
+$btn-primary-color: #FFF;
+
+$logo-url:  url(/static/img/logo_icon_gray.png);
+$logo-color: $body-color;
+
+$winning-green: #1e6408;
+$med-green: #66b830;
+
+// $btn-secondary-bg: $brand-primary;
+// $btn-secondary-color: #FFF;

@@ -1,0 +1,68 @@
+.default-wrapper {
+ display: table;
+ width: 100%;
+ height: 100%;
+ /* For at least Firefox */
+ min-height: 100%;
+ color: #bdc3c7;
+}
+
+:focus,
+button:focus {
+ outline: none !important;
+}
+
+.btn {
+ cursor: pointer;
+}
+
+.default-wrapper-inner {
+ display: table-cell;
+ vertical-align: top;
+}
+
+.cover-container {
+ margin-right: auto;
+ margin-left: auto;
+}
+
+@media (min-width: 40em) {
+ /* Start the vertical centering */
+ .default-wrapper-inner {
+  vertical-align: middle;
+ }
+ .cover-container {
+  width: 100%;
+  /* Must be percentage or pixels for horizontal alignment */
+ }
+}
+
+@media (min-width: 62em) {
+ .cover-container {
+  width: 42rem;
+ }
+}
+
+.form-dark {
+ max-width: 380px;
+ padding: 1.2rem;
+ margin: 0 auto;
+ border-radius: 0.25rem;
+ background: #212529;
+ -webkit-animation: fadein 0.8s;
+ -moz-animation: fadein 0.8s;
+ animation: fadein 0.8s;
+}
+
+@keyframes fadein {
+ from {
+  opacity: 0;
+ }
+ to {
+  opacity: 1;
+ }
+}
+
+.form-dark-heading {
+ text-align: center;
+}
