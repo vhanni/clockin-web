@@ -1,8 +1,8 @@
 <template>
   <footer class="footer bg-dark">
     <b-container fluid>
-      <p class="text-muted mb-0">Built with by
-        <a href="/">Me</a>
+      <p class="text-muted mb-0">Built with ❤ 
+        <a href="https://github.com/vhanni/">Vhanni</a>
       </p>
     </b-container>
   </footer>
