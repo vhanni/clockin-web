@@ -10,7 +10,7 @@
                   <b-img center height="100" alt="timeLogo" src="static/img/timelogo.png" />
                 </b-col>
                 <b-col md="4" class="ml-auto">
-                  <b-img center width="100" height="100" src="static/img/biglogo.png" alt="Logo" />
+                  <b-img center width="100" height="100" src="static/img/logo.png" alt="Logo" />
                 </b-col>
               </b-row>
             </div>
