@@ -13,9 +13,6 @@ Vue.use(BootstrapVue)
 Vue.config.productionTip = false
 
 // icon fontawesome
-import 'vue-awesome/icons/id-badge'
-import 'vue-awesome/icons/envelope'
-import 'vue-awesome/icons/user-plus'
 import 'vue-awesome/icons/spinner'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('icon', Icon)
