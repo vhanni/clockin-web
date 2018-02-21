@@ -5,7 +5,6 @@ import Register from '@/components/Register'
 import Invite from '@/components/Invite'
 import Logout from '@/components/Logout'
 import Timetable from '@/components/Timetable'
-import Todos from '@/components/Todos'
 
 Vue.use(Router)
 export default new Router({
@@ -13,38 +12,27 @@ export default new Router({
   routes: [{
     path: '/',
     name: 'Login',
-    component: Login,
-    meta: { auth: false }
+    component: Login
   },
   {
     path: '/register',
     name: 'Register',
-    component: Register,
-    meta: { auth: false }
+    component: Register
   },
   {
     path: '/invite',
     name: 'Invite',
-    component: Invite,
-    meta: { auth: false }
+    component: Invite
   },
   {
     path: '/timein',
     name: 'Timetable',
-    component: Timetable,
-    meta: { auth: true }
-  },
-  {
-    path: '/todos',
-    name: 'Todos',
-    component: Todos,
-    meta: { auth: false }
+    component: Timetable
   },
   {
     path: '/logout',
     name: 'Logout',
-    component: Logout,
-    meta: { auth: false }
+    component: Logout
   }
   ]
 })
