@@ -36,6 +36,11 @@ const options = {
   inverse: false
 }
 
+// if you run dev disable this protocol
+if (location.protocol != 'https:') {
+  location.href = `https:${window.location.href.substring(window.location.protocol.length)}`
+}
+
 Vue.use(VueProgressBar, options)
 
 window.routerLink = e => {
