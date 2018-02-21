@@ -10,7 +10,10 @@ import VueProgressBar from 'vue-progressbar'
 import './mixins/toasts'
 
 Vue.use(BootstrapVue)
+
+// config
 Vue.config.productionTip = false
+Vue.config.site_url = process.env.SITE_URL
 
 // icon fontawesome
 import 'vue-awesome/icons/spinner'
