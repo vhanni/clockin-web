@@ -1,13 +1,9 @@
 <template>
   <div id="app">
-    <template v-if="currentUser" :mobile="mobile" :tablet="tablet">
-      <Navbar></Navbar>
-    </template>
-    <router-view id="main-wrapper" :mobile="mobile" :tablet="tablet"></router-view>
-    <template v-if="currentUser" :mobile="mobile" :tablet="tablet">
-      <Foot></Foot>
-    </template>
-    <vue-progress-bar></vue-progress-bar>
+      <Navbar v-if="currentUser" :mobile="mobile" :tablet="tablet"></Navbar>
+        <router-view id="main-wrapper" :mobile="mobile" :tablet="tablet"></router-view>
+      <Foot v-if="currentUser" :mobile="mobile" :tablet="tablet"></Foot>
+    <vue-progress-bar v-if="currentUser" :mobile="mobile" :tablet="tablet"></vue-progress-bar>
   </div>
 </template>
 <script>
