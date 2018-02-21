@@ -63,10 +63,10 @@ export default {
         .then((response) => this.checkregsuccess(response))
         .catch((err) => this.checkregfailed(err))
     },
-    checkregsuccess(request) {
-      if (request.data.success) {
+    checkregsuccess(response) {
+      if (response.data.success) {
         this.$toasted.global.addSuccess(response)
-        return
+        this.$router.push(this.$route.query.redirect || '/')
       }
     },
     checkregfailed(err) {
