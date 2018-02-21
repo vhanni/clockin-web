@@ -33,7 +33,7 @@ const addcell = history => history.map(cv => {
 const actions = {
   gethistory ({ commit }, history) {
     return new Promise((resolve, reject) => {
-      if (localStorage.getItem('token') && !history) {
+      if (localStorage.getItem('token') && !history.history) {
         axios.get('api/history').then(({ data }) => {
           if (data.pending.timein) {
             data.pending.timeout = '---'
