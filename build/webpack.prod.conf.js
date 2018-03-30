@@ -110,7 +110,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       // (REQUIRED) List of routes to prerender
       Object.keys(seo),{
         renderAfterTime: 5000,
-        postProcessHtml: function (context) {
+        postProcess: function (context) {
           return context.html.replace(
             /<title>[^<]*<\/title>/i,
             '<title>' + seo[context.route].title + '</title><meta name="description" content="' + seo[context.route].desc + '"/>'
