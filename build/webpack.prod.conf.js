@@ -111,10 +111,6 @@ const webpackConfig = merge(baseWebpackConfig, {
       // Required - The path to the webpack-outputted app to prerender.
       staticDir: path.join(__dirname, '../dist'),
  
-      // Optional - The path your rendered app should be output to.
-      // (Defaults to staticDir.)
-      outputDir: path.join(__dirname, 'prerendered'),
- 
       // Optional - The location of index.html
       indexPath: path.join(__dirname, '../dist', 'index.html'),
  
