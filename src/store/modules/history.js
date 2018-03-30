@@ -34,7 +34,7 @@ const actions = {
   gethistory ({ commit }, history) {
     return new Promise((resolve, reject) => {
       if (localStorage.getItem('token') && !history.history) {
-        axios.get('api/history').then(({ data }) => {
+        axios.get('me/history').then(({ data }) => {
           if (data.pending.timein) {
             data.pending.timeout = '---'
             data.history.push(data.pending)
@@ -58,7 +58,7 @@ const actions = {
   timein ({ commit }, Progress) {
     return new Promise((resolve, reject) => {
       Progress.start()
-      axios.post('api/timein').then(response => {
+      axios.post('me/timein').then(response => {
         commit(MutationTypes.HISTORY, false)
         Progress.finish()
         resolve()
@@ -68,11 +68,19 @@ const actions = {
   timeout ({ commit }, Progress) {
     return new Promise((resolve, reject) => {
       Progress.start()
-      axios.post('api/timeout').then(response => {
+      axios.post('me/timeout').then(response => {
         commit(MutationTypes.HISTORY, false)
         Progress.finish()
         resolve()
       })
+    })
+  },
+  refresh ({ commit }, Progress) {
+    return new Promise((resolve, reject) => {
+      Progress.start()
+      commit(MutationTypes.HISTORY, false)
+      Progress.finish()
+      resolve()
     })
   },
   clearhistory ({ commit }) {
