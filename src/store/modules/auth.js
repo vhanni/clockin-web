@@ -5,12 +5,9 @@ import * as MutationTypes from '../mutation-types'
 const state = { user: !!localStorage.getItem('token') }
 
 const mutations = {
-  [MutationTypes.LOGIN] (state, token) {
-    localStorage.setItem('token', token)
-  },
   [MutationTypes.LOGOUT] (state) {
-    localStorage.clear()
     state.user = null
+    localStorage.clear()
   },
   [MutationTypes.USER] (state, user) {
     state.user = user
@@ -20,41 +17,53 @@ const mutations = {
 const getters = {
   currentUser (state) {
     return state.user
+  },
+  Isloading (state) {
+  	return state.user === undefined
   }
 }
 
 const actions = {
-  getuser ({ commit }, Progress) {
+  getuser ({ commit, dispatch }, Progress) {
     return new Promise((resolve, reject) => {
       Progress.start()
       if (localStorage.getItem('token')) {
-        axios.get('api/user').then(response => {
+        axios.get('me/user').then(response => {
           commit(MutationTypes.USER, response.data.userinfo)
           Progress.finish()
-          resolve()
+          resolve(response)
+        }).catch(err => {
+          reject()
         })
       } else {
         reject()
       }
     })
   },
-  login ({ commit }, form) {
+  logout ({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
-      axios.post('api/auth', { 'user': form.username, 'password': form.password })
+      axios.post('me/logout')
         .then(response => {
-          commit(MutationTypes.LOGIN, response.data.token)
-          resolve(response.data.token)
+          commit(MutationTypes.LOGOUT, response)
+          resolve()
         }).catch(err => {
-          reject(err.response.data)
+        	reject()
         })
     })
   },
-  logout ({ commit }) {
-    commit(MutationTypes.LOGOUT)
+  guest ({ commit, dispatch }, alert = false){
+    if (localStorage.getItem('token') !== false) {
+      commit(MutationTypes.LOGOUT, null)
+      if (alert) {
+        // Add alert
+        dispatch('alert/addAlert', {type: 'token_invalid', variant: 'danger'}, {root: true})
+      }
+    }
   }
 }
 
 export default {
+  namespaced: true,
   state,
   getters,
   mutations,
