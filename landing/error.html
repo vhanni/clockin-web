@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png"/>
+    <title>Timezone</title>
+<% for (var css in htmlWebpackPlugin.files.css) { %>
+    <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
+<% } %>
+  </head>
+  <body>
+    <div class="container-fluid">
+    <div id="header"></div>
+    <h1>Oops.. we got an error!</h1>
+    <div id="form">
+      <center><p>We either couldn't find this page.. or we had a different error. <br> Click the button below to go back to the homepage.</p></center>
+      <a href="/"><button class="btn btn-block btn-lg" id="timein_now" type="submit">Go back</button></a>
+    </div>
+  </div>
+  </body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="<%- htmlWebpackPlugin.options.lang %>">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="shortcut icon" type="image/png" href="/static/img/favicon.png" />
+    <title>TimeZone</title>
+</head>
+
+<body>
+    <div id="applanding">
+        <div id="main-wrapper">
+            <div id="lang_switch" class="dropdown">
+                <span class="nav-link dropdown-toggle"><img src="/static/img/flags/<%- htmlWebpackPlugin.options.lang %>.png"></span>
+                <div class="dropdown-menu">
+                    <a href="/" class="lang_link"><img src="/static/img/flags/en.png">English</a>
+                    <a href="/ph" class="lang_link"><img src="/static/img/flags/ph.png">Tagalog</a>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div id="header"></div>
+                <h1><%- htmlWebpackPlugin.options.locale.land.welcome %></h1>
+                <div id="form">
+                    <input type="text" name="username" id="username" placeholder="<%- htmlWebpackPlugin.options.locale.user.username %> *"
+                    data-username_empty="<%- htmlWebpackPlugin.options.locale.error.username_empty %>"
+                    data-username_chars="<%- htmlWebpackPlugin.options.locale.error.username_chars %>"
+                    data-username_must_be_3_to_15_characters="<%- htmlWebpackPlugin.options.locale.error.username_must_be_3_to_15_characters %>"
+                    data-username_already_registered="<%- htmlWebpackPlugin.options.locale.error.username_already_registered %>"
+                    data-user_not_found="<%- htmlWebpackPlugin.options.locale.error.user_not_found %>" />
+
+                    <input type="password" name="password" id="password" placeholder="<%- htmlWebpackPlugin.options.locale.land.set_password %> *"
+                    data-placeholder="<%- htmlWebpackPlugin.options.locale.user.password %> *"
+                    data-password_empty="<%- htmlWebpackPlugin.options.locale.error.password_empty %>"
+                    data-password_invalid="<%- htmlWebpackPlugin.options.locale.error.password_invalid %>"
+                    data-password_must_be_3_to_200_characters_long="<%- htmlWebpackPlugin.options.locale.error.password_must_be_3_to_200_characters_long %>"
+                    data-password_weak="<%- htmlWebpackPlugin.options.locale.error.password_weak %>" 
+                    data-pw_incorrect="<%- htmlWebpackPlugin.options.locale.error.pw_incorrect %>" />
+
+                <div class="reg_wrapper">
+                    <input type="email" name="email" id="email" placeholder="<%- htmlWebpackPlugin.options.locale.user.email %> (<%- htmlWebpackPlugin.options.locale.gen.required %>) *" 
+                    data-email_already_registered="<%- htmlWebpackPlugin.options.locale.error.email_already_registered %>" 
+                    data-email_not_allowed="<%- htmlWebpackPlugin.options.locale.error.email_not_allowed %>" />
+
+                    <input type="text" name="invite" id="invite" placeholder="<%- htmlWebpackPlugin.options.locale.user.invite %> (<%- htmlWebpackPlugin.options.locale.gen.required %>) *"
+                     data-invite_length="<%- htmlWebpackPlugin.options.locale.error.invite_length %>"
+                     data-invite_empty="<%- htmlWebpackPlugin.options.locale.error.invite_empty %>"
+                     data-invite_chars="<%- htmlWebpackPlugin.options.locale.error.invite_chars %>"
+                     data-Invalid_invitation_code="<%- htmlWebpackPlugin.options.locale.error.Invalid_invitation_code %>"/>
+
+                    <small id="invitation"><%- htmlWebpackPlugin.options.locale.user.invitation_code %></small>
+                      <div id="success_msg">
+                        <span id="success_data" data-register_success="<%- htmlWebpackPlugin.options.locale.success.register_success %>"></span>
+                      </div>
+                </div>
+
+                    <button class="btn btn-block btn-lg" id="timein_now" type="submit">
+                        <%- htmlWebpackPlugin.options.locale.land.timein_now %>
+                    </button>
+                    <div id="form_footer">
+                        <h2>
+                          <span id="link_register"><%- htmlWebpackPlugin.options.locale.land.register %></span>
+                            <%- htmlWebpackPlugin.options.locale.land.or %>
+                          <span id="link_login"><%- htmlWebpackPlugin.options.locale.land.login %></span>
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="invite_modal" class="modal">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <header class="modal-header">
+            <h5 class="modal-title"><%- htmlWebpackPlugin.options.locale.user.invite %></h5>
+              <button type="button" aria-label="Close" class="close">
+              <span aria-hidden="true">×</span></button></header>
+          <div id="invite_body" class="modal-body" data-success="<%- htmlWebpackPlugin.options.locale.user.invite_success %>">
+            <span id="invite-error" data-email_already_registered="<%- htmlWebpackPlugin.options.locale.error.email_already_registered %>" 
+              data-email_not_allowed="<%- htmlWebpackPlugin.options.locale.error.email_not_allowed %>">
+              </span>
+
+            <input type="email" name="email" id="inviteEmail" placeholder="<%- htmlWebpackPlugin.options.locale.user.email %>" 
+            data-email_not_allowed="<%- htmlWebpackPlugin.options.locale.error.email_not_allowed %>" />
+
+            <button id="invitecode" type="button" class="btn-primary"><%- htmlWebpackPlugin.options.locale.user.invite %></button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+</body>
+
+</html>
