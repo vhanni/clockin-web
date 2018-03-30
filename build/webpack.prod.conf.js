@@ -11,6 +11,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SassThemesWebpackPlugin = require('./sass-themes-webpack-plugin/')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
+const Renderer = PrerendererWebpackPlugin.PuppeteerRenderer
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -114,7 +115,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       outputDir: path.join(__dirname, 'prerendered'),
  
       // Optional - The location of index.html
-      indexPath: path.join(__dirname, 'dist', 'index.html'),
+      indexPath: path.join(__dirname, '../dist', 'index.html'),
  
       // Required - Routes to render.
       routes: [ '/timein'],
@@ -132,7 +133,15 @@ const webpackConfig = merge(baseWebpackConfig, {
         decodeEntities: true,
         keepClosingSlash: true,
         sortAttributes: true
-      }
+      },
+ 
+      // The actual renderer to use. (Feel free to write your own)
+      // Available renderers: https://github.com/Tribex/prerenderer/tree/master/renderers
+      renderer: new Renderer({
+        // Optional - The name of the property to add to the window object with the contents of `inject`.
+        injectProperty: '__PRERENDER_INJECTED',
+        renderAfterTime: 5000 // Wait 5 seconds.
+      })
     })
   ]
 })
