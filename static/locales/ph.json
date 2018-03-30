@@ -1,0 +1,71 @@
+{
+  "gen": {
+    "login"                         : "Mag login",
+    "logout"                        : "Mag-log out",
+    "register"                      : "Magparehistro",
+    "invite"                        : "Mag-anyaya",
+    "universal"                     : "Pangkalahatan",
+    "done"                          : "Tapos na",
+    "cancel"                        : "Kanselahin",
+    "clear"                         : "Burahin",
+    "required"                      : "Kailangan",
+    "generatepayslip"               : "Gumawa ng Payslip"
+  },
+  "land": {
+    "welcome"                       : "Maligayang pagdating sa Timezone",
+    "set_password"                  : "Password",
+    "timein_now"                    : "Time In",
+    "login"                         : "mag login",
+    "or"                            : "o",
+    "register"                      : "Magparehistro",
+    "invite"                        : "Mag-anyaya"
+  },
+  "user": {
+    "login"                         : "Mag login",
+    "invite_required"               : "Kailangan mong magbigay ng code ng paanyaya upang matagumpay na nakarehistro",
+    "invitation_code"               : "Code ng imbitasyon?",
+    "invite"                        : "Mag-anyaya",
+    "invite_success"                : "Mangyaring suriin ang iyong email para sa code ng paanyaya.",
+    "inviteholder"                  : "Code ng imbitasyon",
+    "log_alert"                     : "Maligayang pagbabalik,",
+    "username"                      : "Pangalan",
+    "email"                         : "Email",
+    "register"                      : "Magparehistro",
+    "password"                      : "Password"
+  },
+  "success": {
+    "register_success"              : "Matagumpay na nakarehistro, Maaari ka na ngayong mag-login sa iyong account.",
+    "invite_success"                : "Mangyaring suriin ang iyong email para sa code ng paanyaya."
+  },
+  "error": {
+    "token_invalid"                 : "Nag-expire na ang iyong pag-login, mangyaring mag-login muli.",
+    "TOKEN_EXPIRED"                 : "Nag-expire na ang iyong token.",
+    "user_not_found"                : "Ang pangalan ay hindi nakarehistro",
+    "username_must_be_3_to_15_characters" : "Ang username ay dapat na 3 hanggang 15 character",
+    "username_empty"                : "Sabihin sa amin ang iyong kahanga-hangang pangalan",
+    "username_chars"                : "Ito ay hindi wastong mga karakter",
+    "username_already_registered"   : "Nakarehistro na ang username",
+    "password_empty"                : "Walang laman ang password",
+    "password_invalid"              : "Di-wasto ang password",
+    "password_weak"                 : "Masyadong mahina ang password",
+    "password_must_be_3_to_200_characters_long"               : "Ang haba ng password ay dapat na 3 hanggang 200 character",
+    "password_wrong"                : "Hindi tama ang password para sa pangalang ito.",
+    "pw_incorrect"                  : "Mali ang password",
+    "email_not_allowed"             : "Hindi Pinahihintulutan ang Email",
+    "email_already_registered"      : "Nakarehistro na ang Email",
+    "invite_length"                 : "Dapat na may 64 eksaktong mga character ang code ng paanyaya.",
+    "invite_chars"                   : "Ito ay hindi wastong mga karakter",
+    "invite_empty"                  : "Dapat kang magbigay ng code ng paanyaya.",
+    "Invalid_invitation_code"       : "Di-wasto ang code ng imbitasyon",
+    "cannot_load"                   : "Nagkaroon ng error"
+  },
+  "settings": {
+    "interface": {
+      "title"                       : "Mga Setting ng Interface",
+      "theme"                       : "Tema"
+    },
+    "payslip": {
+      "title"                       : "Binuo ng Payslip"
+    }
+  }
+}

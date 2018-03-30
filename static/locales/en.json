@@ -1,0 +1,71 @@
+{
+  "gen": {
+    "login"                         : "Login",
+    "logout"                        : "Logout",
+    "register"                      : "Register",
+    "invite"                        : "Invite",
+    "universal"                     : "General",
+    "done"                          : "Done",
+    "cancel"                        : "Cancel",
+    "clear"                         : "Clear",
+    "required"                      : "Required",
+    "generatepayslip"               : "Generate Payslip"
+  },
+  "land": {
+    "welcome"                       : "Welcome to Timezone",
+    "set_password"                  : "Password",
+    "timein_now"                    : "Time In",
+    "login"                         : "Login",
+    "or"                            : "or",
+    "register"                      : "Register",
+    "invite"                        : "Invite"
+  },
+  "user": {
+    "login"                         : "Login",
+    "invitation_code"               : "Invitation code ?",
+    "invite_required"               : "You need to provide invitation code to successfully registered",
+    "inviteholder"                  : "Invitation code",
+    "invite"                        : "Invite",
+    "invite_success"                : "Please check your email for invitation code",
+    "log_alert"                     : "Welcome back,",
+    "username"                      : "Username",
+    "email"                         : "Email",
+    "register"                      : "Register",
+    "password"                      : "Password"
+  },
+  "success": {
+    "register_success"              : "Successfully registered, You may now login to your account",
+    "invite_success"                : "Please check your email for invitation code"
+  },
+  "error": {
+    "token_invalid"                 : "Your login has expired, please login again.",
+    "TOKEN_EXPIRED"                 : "Your Token has expired.",
+    "user_not_found"                : "Username is not registered !",
+    "username_must_be_3_to_15_characters" : "Username must be 3 to 15 characters",
+    "username_empty"                : "Tell us your awesome name",
+    "username_chars"                : "This is invalid characters",
+    "username_already_registered"   : "Username already registered",
+    "password_empty"                : "Password is empty",
+    "password_invalid"              : "Password is invalid",
+    "password_weak"                 : "Password is too weak",
+    "password_must_be_3_to_200_characters_long"               : "Password must be 3 to 200 characters long",
+    "password_wrong"                : "Password is not correct for this user.",
+    "pw_incorrect"                  : "Password is incorrect for this user.",
+    "email_not_allowed"             : "Email Not Allowed",
+    "email_already_registered"      : "Email is already registered",
+    "invite_length"                 : "Invitation code must have 64 exact characters",
+    "invite_chars"                  : "This is invalid characters",
+    "invite_empty"                  : "You must provide invitation code",
+    "Invalid_invitation_code"       : "Invalid invitation code",
+    "cannot_load"                   : "There was an error"
+  },
+  "settings": {
+    "interface": {
+      "title"                       : "Interface Settings",
+      "theme"                       : "Theme"
+    },
+    "payslip": {
+      "title"                       : "Generated Payslip"
+    }
+  }
+}
