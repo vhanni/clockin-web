@@ -11,7 +11,6 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SassThemesWebpackPlugin = require('./sass-themes-webpack-plugin/')
 const PrerenderSpaPlugin = require('prerender-spa-plugin')
-const Renderer = PrerendererWebpackPlugin.PuppeteerRenderer
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
