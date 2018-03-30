@@ -10,7 +10,8 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SassThemesWebpackPlugin = require('./sass-themes-webpack-plugin/')
-const PrerenderSpaPlugin = require('prerender-spa-plugin')
+const PrerendererWebpackPlugin = require('prerenderer-webpack-plugin')
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
 const Renderer = PrerendererWebpackPlugin.PuppeteerRenderer
 
 const env = process.env.NODE_ENV === 'testing'
@@ -106,7 +107,7 @@ const webpackConfig = merge(baseWebpackConfig, {
       to: config.build.assetsSubDirectory,
       ignore: ['.*']
     }]),
-      new PrerenderSpaPlugin({
+      new PrerenderSPAPlugin({
       // Required - The path to the webpack-outputted app to prerender.
       staticDir: path.join(__dirname, '../dist'),
  
