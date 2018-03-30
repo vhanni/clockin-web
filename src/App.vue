@@ -1,15 +1,15 @@
 <template>
-  <div id="app">
-      <Navbar v-if="currentUser" :mobile="mobile" :tablet="tablet"></Navbar>
-        <router-view id="main-wrapper" :mobile="mobile" :tablet="tablet"></router-view>
-      <Foot v-if="currentUser" :mobile="mobile" :tablet="tablet"></Foot>
-    <vue-progress-bar v-if="currentUser" :mobile="mobile" :tablet="tablet"></vue-progress-bar>
+  <div id="app" :class="{ 'user' : currentUser }">
+      <Navbar :tablet="tablet" :mobile="mobile"></Navbar>
+        <router-view id="main-wrapper" :tablet="tablet" :mobile="mobile"></router-view>
+      <Foot id="footer" :tablet="tablet" :mobile="mobile"></Foot>
+    <vue-progress-bar></vue-progress-bar>
   </div>
 </template>
 <script>
-import {mapGetters} from 'vuex'
-import Navbar from '@/components/Navbar'
-import Foot from '@/components/Foot'
+import {mapState} from 'vuex'
+import Navbar from '@/components/layout/Navbar'
+import Foot from '@/components/layout/Foot'
 export default {
   name: 'app',
   components: {
@@ -18,16 +18,21 @@ export default {
   },
   data() {
     return {
-      publicpath: ['/', '/invite', '/register'],
+      publicpath: ['/'],
       mobile: false,
       tablet: false
     }
   },
   computed: {
-    ...mapGetters({currentUser: 'currentUser'})
+    ...mapState('interfaceSettings', ['theme']),
   },
   created() {
+    // window first load initiate progress
+    this.$Progress.start()
     this.checkCurrentLogin()
+    if (this.theme.toLowerCase() !== 'default' && typeof window.themes !== 'undefined') {
+      this.$store.dispatch('interfaceSettings/updateTheme', this.theme)
+    }
   },
   mounted() {
     window.addEventListener('resize', this.handleResize)
@@ -38,13 +43,17 @@ export default {
   },
   methods: {
     checkCurrentLogin() {
-      this.$store.dispatch('getuser',this.$Progress).then(() => {
-        this.$router.push(this.$route.query.redirect || '/timein')
-      }).catch(() => {
-        if (!this.publicpath.includes(this.$route.path)) {
-          this.$router.push('/?redirect=' + this.$route.path)
-        }
-      })
+      if (localStorage.getItem('token') == null ) {
+        localStorage.clear()
+        return document.location.href = '/'
+      } else {
+        this.$store.dispatch('auth/getuser',this.$Progress).then(() => {
+          this.$router.push(this.$route.fullPath || 'timein')
+        }).catch(() => {
+          if (this.publicpath.includes(this.$route.path)) {
+            this.$router.push('/')
+          }
+        })}
     },
     handleResize(event) {
       // If currently not mobile-mode and size is smaller, set it
@@ -64,22 +73,5 @@ export default {
 }
 </script>
 <style lang="scss">
-@import "assets/style/main.scss"
-</style>
-<style lang="css">
-html,
-body,
-#app {
-  height: 100%;
-}
-
-:focus,
-button:focus {
-  outline: 0!important;
-}
-
-#main-wrapper {
-  min-height: calc(100% - 56px);
-  padding-top: 2rem;
-}
+@import "assets/style/common.scss";
 </style>
