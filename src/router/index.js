@@ -1,38 +1,33 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Login from '@/components/Login'
-import Register from '@/components/Register'
-import Invite from '@/components/Invite'
-import Logout from '@/components/Logout'
-import Timetable from '@/components/Timetable'
+import Timetable from '@/components/layout/Timetable'
+
+import SettingsInterface from '@/components/modals/SettingsInterface'
+import SettingsPayslip from '@/components/modals/SettingsPayslip'
 
 Vue.use(Router)
 export default new Router({
   mode: 'history',
   routes: [{
     path: '/',
-    name: 'Login',
-    component: Login
-  },
-  {
-    path: '/register',
-    name: 'Register',
-    component: Register
-  },
-  {
-    path: '/invite',
-    name: 'Invite',
-    component: Invite
-  },
-  {
-    path: '/timein',
     name: 'Timetable',
-    component: Timetable
-  },
-  {
-    path: '/logout',
-    name: 'Logout',
-    component: Logout
-  }
-  ]
+    component: Timetable,
+    meta: { auth: false },
+    children: [
+      {
+        path: 'timein'
+      },
+      {
+        path: 'settings/interface',
+        component: SettingsInterface,
+        meta: { auth: false }
+      },
+      {
+        path: 'settings/payslip',
+        component: SettingsPayslip,
+        meta: { auth: false}
+      }
+    ]
+  }]
 })
+
