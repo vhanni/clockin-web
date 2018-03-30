@@ -12,54 +12,66 @@
 
 
 // Reassign color vars to semantic color scheme
-$brand-primary:             #00b0ef !default;
+$brand-primary:             #80949b !default;
 // $brand-success:             $green !default;
 // $brand-info:                $teal !default;
 // $brand-warning:             $orange !default;
 // $brand-danger:              $red !default;
 // $brand-inverse:             $gray-dark !default;
 
-$body-bg:       #111 !default;
-$body-color:    #bdc3c7 !default;
+$body-bg:       #000 !default;
+$body-color:    #FFF !default;
 
-$box-bg: #022236 !default;
-$tab-inactive-bg: #021d2f !default;
-// Color for chat timestamps, disabled inputs, etc
-$color-less-focus: darken($body-color, 50%) !default;
-$color-some-focus: lighten($box-bg, 5%) !default;
-$btn-focus-box-shadow : 0 0 0 2px rgba($brand-primary, .25) !default;
-$award-bg: lighten($box-bg, 2%) !default;
+$box-bg: #171e20 !default;
+$tab-inactive-bg: #292f31 !default;
+
+$color-less-focus: #666 !default;
+$color-some-focus: darken($brand-primary, 33%) !default;
 
 $btn-primary-bg:  $brand-primary !default;
 $btn-primary-color: $body-bg !default;
 
+$grid-gutter-width-base:    8px !default;
+
+// Adjusted defaults, not theme specific
+$border-radius: 4px !default;
+
+$font-size-base: 1rem;
+$stripe-bg: #12181a !default;
+$stripeeven-bg: #343a40 !default;
+
 $btn-secondary-color:            $body-color !default;
 $btn-secondary-bg:              $tab-inactive-bg !default;
 
-$logo-url:  url(/static/img/logo_icon_white.png) !default;
+$logo-url:  url(/static/img/logo.png) !default;
 $logo-color: #FFF !default;
 
 @font-face {
-    font-family: 'texgyreadventorregular';
-    src: url(/static/fonts/texgyreadventor-regular-webfont.woff);
-    src: url(/static/fonts/texgyreadventor-regular-webfont.woff) format('woff');
-    font-weight: normal;
-    font-style: normal;
+ font-family: 'texgyreadventorregular';
+ src: url(/static/fonts/texgyreadventor-regular-webfont.woff);
+ src: url(/static/fonts/texgyreadventor-regular-webfont.woff) format('woff');
+ font-weight: normal;
+ font-style: normal;
+ font-display: fallback;
 }
+
 @font-face {
-    font-family: 'texgyreadventorbold';
-    src: url(/static/fonts/texgyreadventor-bold-webfont.woff);
-    src: url(/static/fonts/texgyreadventor-bold-webfont.woff) format('woff');
-    font-weight: normal;
-    font-style: normal;
+ font-family: 'texgyreadventorbold';
+ src: url(/static/fonts/texgyreadventor-bold-webfont.woff);
+ src: url(/static/fonts/texgyreadventor-bold-webfont.woff) format('woff');
+ font-weight: normal;
+ font-style: normal;
+ font-display: fallback;
 }
+
 @font-face {
-    font-family: 'esphimere-bold-italic';
-    src: url(/static/fonts/esphimere-bold-italic.woff);
-    src: url(/static/fonts/esphimere-bold-italic.otf) format('otf');
-    src: url(/static/fonts/esphimere-bold-italic.woff) format('woff');
-    font-weight: normal;
-    font-style: normal;
+ font-family: 'esphimere-bold-italic';
+ src: url(/static/fonts/esphimere-bold-italic.woff);
+ src: url(/static/fonts/esphimere-bold-italic.otf) format('otf');
+ src: url(/static/fonts/esphimere-bold-italic.woff) format('woff');
+ font-weight: normal;
+ font-style: normal;
+ font-display: fallback;
 }
 
 $bolditalic-font:'esphimere-bold-italic', Arial, Helvetica, sans-serif !default;
