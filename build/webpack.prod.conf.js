@@ -107,10 +107,16 @@ const webpackConfig = merge(baseWebpackConfig, {
     }]),
     new PrerenderSpaPlugin(
       path.join(__dirname, '../dist'),
-      Object.keys(seo),
-      {
+      Object.keys(seo), {
+        // Wait 2 seconds to make sure it's all loaded
         captureAfterTime: 2000,
         ignoreJSErrors: true,
+        phantomOptions: '--web-security=false',
+        phantomPageViewportSize: {
+          width: 1280,
+          height: 800
+        },
+        // Add title and meta desc to page
         postProcessHtml: function (context) {
           return context.html.replace(
             /<title>[^<]*<\/title>/i,
