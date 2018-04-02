@@ -107,7 +107,7 @@ const webpackConfig = merge(baseWebpackConfig, {
     }]),
     new PrerenderSpaPlugin(
       path.join(__dirname, '../dist'),
-      [Object.keys(seo)],
+      Object.keys(seo),
       {
         captureAfterTime: 2000,
         ignoreJSErrors: true,
