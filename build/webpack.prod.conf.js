@@ -105,9 +105,9 @@ const webpackConfig = merge(baseWebpackConfig, {
       to: config.build.assetsSubDirectory,
       ignore: ['.*']
     }]),
-    new PrerenderSpaPlugin({
-      staticDir: "path.join(__dirname, '../dist')",
-      routes: "[Object.keys(seo)]",
+    new PrerenderSpaPlugin(
+      path.join(__dirname, '../dist'),
+      [Object.keys(seo)],
       {
         captureAfterTime: 2000,
         ignoreJSErrors: true,
@@ -118,7 +118,7 @@ const webpackConfig = merge(baseWebpackConfig, {
           )
         }
       }
-    })
+    )
   ]
 })
 
