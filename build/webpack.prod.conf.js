@@ -10,9 +10,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 const SassThemesWebpackPlugin = require('./sass-themes-webpack-plugin/')
-const PrerendererWebpackPlugin = require('prerenderer-webpack-plugin')
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
-const Renderer = PrerendererWebpackPlugin.PuppeteerRenderer
+const PrerenderSpaPlugin = require('prerender-spa-plugin')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -107,39 +105,21 @@ const webpackConfig = merge(baseWebpackConfig, {
       to: config.build.assetsSubDirectory,
       ignore: ['.*']
     }]),
-      new PrerenderSPAPlugin({
-      // Required - The path to the webpack-outputted app to prerender.
-      staticDir: path.join(__dirname, '../dist'),
- 
-      // Optional - The location of index.html
-      indexPath: path.join(__dirname, '../dist', 'index.html'),
- 
-      // Required - Routes to render.
-      routes: [ '/timein'],
-      postProcess (renderedRoute) {
-        // Ignore any redirects.
-        renderedRoute.path = renderedRoute.originalPath
-        // Basic whitespace removal. (Don't use this in production.)
-        renderedRoute.html = renderedRoute.html.split(/>[\s]+</gmi).join('><')
- 
-        return renderedRoute
-      },
-      minify: {
-        collapseBooleanAttributes: true,
-        collapseWhitespace: true,
-        decodeEntities: true,
-        keepClosingSlash: true,
-        sortAttributes: true
-      },
- 
-      // The actual renderer to use. (Feel free to write your own)
-      // Available renderers: https://github.com/Tribex/prerenderer/tree/master/renderers
-      renderer: new Renderer({
-        // Optional - The name of the property to add to the window object with the contents of `inject`.
-        injectProperty: '__PRERENDER_INJECTED',
-        renderAfterTime: 5000 // Wait 5 seconds.
-      })
-    })
+    new PrerenderSpaPlugin(
+      path.resolve(__dirname, '../dist'),
+      // (REQUIRED) List of routes to prerender
+      Object.keys(seo),
+      {
+        captureAfterTime: 2000,
+        ignoreJSErrors: true,
+        postProcessHtml: function (context) {
+          return context.html.replace(
+            /<title>[^<]*<\/title>/i,
+            '<title>' + seo[context.route].title + '</title><meta name="description" content="' + seo[context.route].desc + '"/>'
+          )
+        }
+      }
+    )
   ]
 })
 
