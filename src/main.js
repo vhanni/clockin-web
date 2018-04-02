@@ -24,7 +24,6 @@ Vue.use(VueMomentLib)
 // icon fontawesome
 import 'vue-awesome/icons/github'
 import 'vue-awesome/icons/sliders'
-import 'vue-awesome/icons/spinner'
 import Icon from 'vue-awesome/components/Icon'
 Vue.component('icon', Icon)
 
