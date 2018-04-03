@@ -103,7 +103,7 @@ const webpackConfig = {
     new CopyWebpackPlugin([{
       from: path.join(__dirname, '../node_modules/zxcvbn/dist/zxcvbn.js.map'),
       to: utils.assetsPath('js')
-    }])
+    }]),
     // copy error html
     new HtmlWebpackPlugin({
       filename: 'error.html',
