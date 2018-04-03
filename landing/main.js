@@ -223,8 +223,8 @@ function subError (element) {
           el = 'password'
         } else if (el == 'email') {
           el = 'email'
-        } else if (el == 'invalid') {
-          el = 'Invalid'
+        } else if (el == 'Invalid') {
+          el = 'invalid'
         } else if (el == 'invite') {
           el = 'invite'
         }
