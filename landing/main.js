@@ -230,7 +230,7 @@ function subError (element) {
         }
         addError(window[el], error)
       } else {
-        addError(formfooter, error)
+        addError(invite, error)
       }
     })
   }
