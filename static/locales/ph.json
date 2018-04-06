@@ -12,7 +12,8 @@
     "generatepayslip"               : "Gumawa ng Payslip"
   },
   "land": {
-    "welcome"                       : "Maligayang pagdating sa Timezone",
+    "welcome"                       : "Maligayang pagdating sa Clockin.space",
+    "title"                         : "Clockin.space",
     "set_password"                  : "Password",
     "timein_now"                    : "Time In",
     "login"                         : "mag login",

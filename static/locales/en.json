@@ -12,7 +12,8 @@
     "generatepayslip"               : "Generate Payslip"
   },
   "land": {
-    "welcome"                       : "Welcome to Timezone",
+    "welcome"                       : "Welcome to Clockin.space",
+    "title"                         : "Clockin.space",
     "set_password"                  : "Password",
     "timein_now"                    : "Time In",
     "login"                         : "Login",
