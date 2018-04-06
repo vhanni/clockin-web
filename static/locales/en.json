@@ -57,7 +57,7 @@
     "invite_length"                 : "Invitation code must have 64 exact characters",
     "invite_chars"                  : "This is invalid characters",
     "invite_empty"                  : "You must provide invitation code",
-    "Invalid_invitation_code"       : "Invalid invitation code",
+    "invalid_invitation_code"       : "Invalid invitation code",
     "cannot_load"                   : "There was an error"
   },
   "settings": {

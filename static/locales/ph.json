@@ -57,7 +57,7 @@
     "invite_length"                 : "Dapat na may 64 eksaktong mga character ang code ng paanyaya.",
     "invite_chars"                   : "Ito ay hindi wastong mga karakter",
     "invite_empty"                  : "Dapat kang magbigay ng code ng paanyaya.",
-    "Invalid_invitation_code"       : "Di-wasto ang code ng imbitasyon",
+    "invalid_invitation_code"       : "Di-wasto ang code ng imbitasyon",
     "cannot_load"                   : "Nagkaroon ng error"
   },
   "settings": {
