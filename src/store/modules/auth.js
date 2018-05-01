@@ -1,66 +1,74 @@
-import Vue from 'vue'
-import axios from '../../backend/vue-axios/axios'
-import * as MutationTypes from '../mutation-types'
+import Vue from 'vue';
+import * as MutationTypes from '../mutation-types';
 
-const state = { user: !!localStorage.getItem('token') }
+const state = { user: !!localStorage.getItem('token') };
 
 const mutations = {
-  [MutationTypes.LOGOUT] (state) {
-    state.user = null
-    localStorage.clear()
+  [MutationTypes.LOGOUT](state) {
+    state.user = null;
+    localStorage.clear();
   },
-  [MutationTypes.USER] (state, user) {
-    state.user = user
+  [MutationTypes.USER](state, user) {
+    state.user = user;
   }
-}
+};
 
 const getters = {
-  currentUser (state) {
-    return state.user
+  currentUser(state) {
+    return state.user;
   },
-  Isloading (state) {
-  	return state.user === undefined
+  Isloading(state) {
+    return state.user === undefined;
   }
-}
+};
 
 const actions = {
-  getuser ({ commit, dispatch }, Progress) {
+  getuser({ commit, dispatch }, Progress) {
     return new Promise((resolve, reject) => {
-      Progress.start()
+      Progress.start();
       if (localStorage.getItem('token')) {
-        axios.get('me/user').then(response => {
-          commit(MutationTypes.USER, response.data.userinfo)
-          Progress.finish()
-          resolve(response)
-        }).catch(err => {
-          reject()
-        })
+        Vue.axios
+          .get('me/user')
+          .then(response => {
+            commit(MutationTypes.USER, response.data.userinfo);
+            Progress.finish();
+            resolve(response);
+          })
+          .catch(err => {
+            reject();
+          });
       } else {
-        reject()
+        reject();
       }
-    })
+    });
   },
-  logout ({ commit, dispatch }) {
+  logout({ commit, dispatch }) {
     return new Promise((resolve, reject) => {
-      axios.post('me/logout')
+      Vue.axios
+        .post('me/logout')
         .then(response => {
-          commit(MutationTypes.LOGOUT, response)
-          resolve()
-        }).catch(err => {
-        	reject()
+          commit(MutationTypes.LOGOUT, response);
+          resolve();
         })
-    })
+        .catch(err => {
+          reject();
+        });
+    });
   },
-  guest ({ commit, dispatch }, alert = false){
+  guest({ commit, dispatch }, alert = false) {
     if (localStorage.getItem('token') !== false) {
-      commit(MutationTypes.LOGOUT, null)
+      commit(MutationTypes.LOGOUT, null);
       if (alert) {
         // Add alert
-        dispatch('alert/addAlert', {type: 'token_invalid', variant: 'danger'}, {root: true})
+        dispatch(
+          'alert/addAlert',
+          { type: 'token_invalid', variant: 'danger' },
+          { root: true }
+        );
       }
     }
   }
-}
+};
 
 export default {
   namespaced: true,
@@ -68,4 +76,4 @@ export default {
   getters,
   mutations,
   actions
-}
+};

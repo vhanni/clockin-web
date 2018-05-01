@@ -1,38 +1,38 @@
-import Vue from 'vue'
-import axios from '../../backend/vue-axios/axios'
+import Vue from 'vue';
+
 const state = {
   alerts: [],
   alertIndex: 1
-}
+};
 const actions = {
   addAlert: (context, data) => {
     // Add alert
-    var id = context.state.alertIndex
-    context.commit('addAlert', {id, ...data})
+    const id = context.state.alertIndex;
+    context.commit('addAlert', { id, ...data });
 
     // Remove alert afer 5 seconds
     setTimeout(() => {
-      context.commit('removeAlert', id)
-    }, 5000)
+      context.commit('removeAlert', id);
+    }, 5000);
   }
-}
+};
 const mutations = {
   addAlert: (state, data) => {
-    state.alerts.push(data)
+    state.alerts.push(data);
     // Increase index for next alert
-    state.alertIndex++
+    state.alertIndex++;
   },
   removeAlert: (state, id) => {
     // Get index of alert we want to remove
-    var index = state.alerts.map((el) => el.id).indexOf(id)
+    const index = state.alerts.map(el => el.id).indexOf(id);
     // Maybe user clicked it away before timer ended
-    if (index !== -1) state.alerts.splice(index, 1)
+    if (index !== -1) state.alerts.splice(index, 1);
   }
-}
+};
 
 export default {
   namespaced: true,
   state,
   actions,
   mutations
-}
+};

@@ -1,10 +1,13 @@
 <template>
   <div class="my-1">
-    <b-button to="/settings/interface" size="sm" id="linksettings"> <icon name="sliders"></icon></b-button>
+    <b-button 
+      id="linksettings" 
+      to="/settings/interface" 
+      size="sm"> <icon name="sliders"/></b-button>
   </div>
 </template>
 <script>
 export default {
-  name: 'tablesettings'
-}
+  name: 'Tablesettings'
+};
 </script>

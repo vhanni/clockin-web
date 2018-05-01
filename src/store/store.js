@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import Vuex from 'vuex'
-import createPersistedState from 'vuex-persistedstate'
+import Vue from 'vue';
+import Vuex from 'vuex';
+import createPersistedState from 'vuex-persistedstate';
 
-import auth from './modules/auth'
-import history from './modules/history'
-import alert from './modules/alert'
-import interfaceSettings from './modules/interface'
-import payslipSettings from './modules/payslip'
-import language from './modules/language'
+import auth from './modules/auth';
+import history from './modules/history';
+import alert from './modules/alert';
+import interfaceSettings from './modules/interface';
+import payslipSettings from './modules/payslip';
+import language from './modules/language';
 
-Vue.use(Vuex)
+Vue.use(Vuex);
 
 export const store = new Vuex.Store({
   // strict: true, // only for debugging
@@ -19,17 +19,18 @@ export const store = new Vuex.Store({
     alert,
     interfaceSettings,
     payslipSettings,
-    language,
-    
+    language
   },
   // Save some states in localStorage as settings
-  plugins: [createPersistedState({
-    key: 'settings',
-    paths: [
-      'auth.user',
-      'history.history',
-      'interfaceSettings.theme',
-      'language.currentLanguage'
-    ]
-  })]
-})
+  plugins: [
+    createPersistedState({
+      key: 'settings',
+      paths: [
+        'auth.user',
+        'history.history',
+        'interfaceSettings.theme',
+        'language.currentLanguage'
+      ]
+    })
+  ]
+});

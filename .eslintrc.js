@@ -1,12 +1,14 @@
 module.exports = {
   'root': true,
+
   'env': {
     'browser': true,
-    'es6': true,
-    'node': true
+    'es6': true
   },
-  'extends': 'plugin:vue/essential',
+  'extends': ['plugin:vue/recommended'],
+  'plugins': ['vue'],
   'parserOptions': {
+    parser: 'babel-eslint',
     'sourceType': 'module',
     'ecmaVersion': 8
   },
@@ -25,7 +27,7 @@ module.exports = {
     ],
     'semi': [
       'error',
-      'never'
+      'always'
     ]
   }
-}
+};

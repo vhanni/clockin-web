@@ -1,30 +1,35 @@
 <template>
-  <b-nav-item-dropdown class="dd-right" right>
+  <b-nav-item-dropdown 
+    class="dd-right" 
+    right>
     <template slot="text">
-      <span v-if="currentUser" id="username">{{ currentUser.username }}</span>
+      <span 
+        v-if="currentUser" 
+        id="username">{{ currentUser.username }}</span>
     </template>
-    <b-dropdown-item @click="logout"> {{$t('gen.logout')}} </b-dropdown-item>
+    <b-dropdown-item @click="logout"> {{ $t('gen.logout') }} </b-dropdown-item>
   </b-nav-item-dropdown>
 </template>
 <script>
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters, mapActions } from 'vuex';
 export default {
   props: {
-    showName:{
-    	type: Boolean
+    showName: {
+      type: Boolean,
+      default: false
     }
   },
   computed: {
     ...mapGetters('auth', ['currentUser'])
   },
-  methods:{
-  	logout() {
+  methods: {
+    logout() {
       this.$store.dispatch('auth/logout').then(() => {
         this.$store.dispatch('clearhistory').then(() => {
-          window.location.replace('/')
-        })
-      })
+          window.location.replace('/');
+        });
+      });
     }
   }
-}
+};
 </script>

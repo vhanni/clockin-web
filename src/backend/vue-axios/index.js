@@ -1,6 +1,17 @@
-import Vue from 'vue'
-import VueAxios from 'vue-axios'
+const API_URL = process.env.API_URL;
 
-import axios from './axios'
+const AxiosInit = axios => {
+  const instance = axios.create({
+    baseURL: API_URL
+  });
+  instance.defaults.headers.post['Content-Type'] = 'application/json';
+  instance.interceptors.request.use(config => {
+    if (localStorage.token) {
+      config.headers['Authorization'] = `Bearer ${localStorage.token}`;
+    }
+    return config;
+  });
+  return instance;
+};
 
-Vue.use(VueAxios, axios)
+export default AxiosInit;
