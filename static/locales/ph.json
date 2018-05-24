@@ -9,11 +9,11 @@
     "cancel"                        : "Kanselahin",
     "clear"                         : "Burahin",
     "required"                      : "Kailangan",
-    "generatepayslip"               : "Gumawa ng Payslip"
+    "generatepayslip"               : "Gumawa ng Payslip",
+    "settings"                      : "Mga Setting"
   },
   "land": {
-    "welcome"                       : "Maligayang pagdating sa Clockin.space",
-    "title"                         : "Clockin.space",
+    "welcome"                       : "Maligayang pagdating sa",
     "set_password"                  : "Password",
     "timein_now"                    : "Time In",
     "login"                         : "mag login",
@@ -32,7 +32,8 @@
     "username"                      : "Pangalan",
     "email"                         : "Email",
     "register"                      : "Magparehistro",
-    "password"                      : "Password"
+    "password"                      : "Password",
+    "settings"                      : "Mga Setting ng User"
   },
   "success": {
     "register_success"              : "Matagumpay na nakarehistro, Maaari ka na ngayong mag-login sa iyong account.",
@@ -63,10 +64,44 @@
   "settings": {
     "interface": {
       "title"                       : "Mga Setting ng Interface",
-      "theme"                       : "Tema"
+      "theme"                       : "Tema",
+      "show_avatars"                : "Ipakita ang mga avatar"
     },
     "payslip": {
-      "title"                       : "Binuo ng Payslip"
+      "title"                       : "Binuo ng Payslip",
+      "button"                      : "Ipakita ang PDF"
+    },
+    "avatar": {
+        "title"                 : "Avatar",
+        "current"               : "Current avatar",
+        "change"                : "Change avatar",
+        "reminder"              : "Mangyaring maghintay ng 5 hanggang 10 minuto para magkabisa ang mga pagbabago sa avatar.",
+        "info"                  : "Click below here to select your new avatar.",
+        "button"                : "Upload avatar",
+        "empty"                 : "Please select an avatar first.",
+        "error"                 : "We couldn't update your avatar, try again later.",
+        "success"               : "We updated your avatar."
+    },
+    "info": {
+        "title"                  : "Info",
+        "current"               : "Kasalukuyang impormasyon",
+        "firstname"              : "Pangalan",
+        "lastname"               : "Apelyido",
+        "button"                 : "I-Edit"
+    },
+    "firstname":{
+        "label"                 :"Pangalan:",
+        "placeholder"           : "Ilagay ang iyong pangalan*",
+        "firstname"             : "Pangalan",
+        "error"                 : "Nagkaroon ng error, Hindi namin mai-update ang iyong pangalan !",
+        "success"               : "We updated your firstname."
+    },
+    "lastname": {
+        "label"                 :"Apelyido:",
+        "placeholder"           : "Ilagay ang iyong apelyido*",
+        "surname"               : "Apelyido",
+        "error"                 : "Nagkaroon ng error, Hindi namin mai-update ang iyong apelyido !",
+        "success"               : "We updated your surname."
     }
   }
 }

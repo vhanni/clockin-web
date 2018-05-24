@@ -9,11 +9,11 @@
     "cancel"                        : "Cancel",
     "clear"                         : "Clear",
     "required"                      : "Required",
-    "generatepayslip"               : "Generate Payslip"
+    "generatepayslip"               : "Generate Payslip",
+    "settings"                      : "Settings"
   },
   "land": {
-    "welcome"                       : "Welcome to Clockin.space",
-    "title"                         : "Clockin.space",
+    "welcome"                       : "Welcome to",
     "set_password"                  : "Password",
     "timein_now"                    : "Time In",
     "login"                         : "Login",
@@ -32,7 +32,8 @@
     "username"                      : "Username",
     "email"                         : "Email",
     "register"                      : "Register",
-    "password"                      : "Password"
+    "password"                      : "Password",
+    "settings"                      : "User Settings"
   },
   "success": {
     "register_success"              : "Successfully registered, You may now login to your account",
@@ -63,10 +64,44 @@
   "settings": {
     "interface": {
       "title"                       : "Interface Settings",
-      "theme"                       : "Theme"
+      "theme"                       : "Theme",
+      "show_avatars"                : "Show avatars"
     },
     "payslip": {
-      "title"                       : "Generated Payslip"
+      "title"                       : "Generated Payslip",
+      "button"                      : "View PDF"
+    },
+    "avatar": {
+        "title"                 : "Avatar",
+        "current"               : "Current avatar",
+        "change"                : "Change avatar",
+        "reminder"              : "Please wait 5 to 10 minutes for avatar changes to take effect.",
+        "info"                  : "Click below here to select your new avatar.",
+        "button"                : "Upload avatar",
+        "empty"                 : "Please select an avatar first.",
+        "error"                 : "We couldn't update your avatar, try again later.",
+        "success"               : "We updated your avatar."
+    },
+    "info": {
+        "title"                  : "Info",
+        "current"               : "Current information",
+        "firstname"              : "Firstname",
+        "lastname"               : "Lastname",
+        "button"                 : "Edit"
+    },
+    "firstname":{
+        "label"                 : "Firstname:",
+        "placeholder"           : "Enter your firstname*",
+        "firstname"             : "Firstname",
+        "error"                 : "There was an error, we cannot update your firstname !",
+        "success"               : "We updated your firstname."
+    },
+    "lastname": {
+        "label"                 : "Lastname:",
+        "placeholder"           : "Enter your lastname*",
+        "surname"               : "Surname",
+        "error"                 : "There was an error, we cannot update your surname !",
+        "success"               : "We updated your surname."
     }
   }
 }
