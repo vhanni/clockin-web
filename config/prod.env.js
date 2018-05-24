@@ -8,7 +8,7 @@ if (islocal) {
 	TITLE = 'ClockIn';
 }
 
-export default {
+module.exports = {
 	NODE_ENV: '"production"',
 	SITE_URL,
 	TITLE,
