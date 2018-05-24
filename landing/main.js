@@ -27,7 +27,7 @@ const InvInvite = invite => {
 };
 
 // Functions
-function createCookie (name, value, days) {
+function createCookie(name, value, days) {
   let expires = '';
   if (days) {
     const date = new Date();
@@ -37,14 +37,14 @@ function createCookie (name, value, days) {
   document.cookie = `${name}=${value}${expires}; path=/`;
 }
 
-function getUrlParameter (name) {
+function getUrlParameter(name) {
   name = name.replace(/[[]/, '\\[').replace(/[\]]/, '\\]');
   const regex = new RegExp(`[\\?&]${name}=([^&#]*)`);
   const results = regex.exec(location.search);
   return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
 
-function sendRequest (url, data, successFn, errorFn) {
+function sendRequest(url, data, successFn, errorFn) {
   let params = null;
   const token = localStorage.getItem('token');
   const http = new XMLHttpRequest();
@@ -97,8 +97,8 @@ const fieldErrors = [
   'username_must_be_3_to_15_characters'
 ];
 
-function validateEmail (email) {
-  const re = /^(([^<:angry:)[\]\\.,;:\s@"]+(\.[^<:angry:)[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+function validateEmail(email) {
+  const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
   // We either need empty email or a valid one
   if (email === '' || re.test(email)) {
     return false;
@@ -107,7 +107,7 @@ function validateEmail (email) {
   }
 }
 
-function validatePassword (password, field) {
+function validatePassword(password, field) {
   if (password.length < 7 || password.length > 200) {
     return 'password_must_be_3_to_200_characters_long';
   } else if (typeof window.zxcvbn !== 'undefined' && window.zxcvbn(password).score < 2) {
@@ -117,7 +117,7 @@ function validatePassword (password, field) {
   } else return false;
 }
 
-function addError (element, error) {
+function addError(element, error) {
   let feedback = element.nextElementSibling;
   error = element.getAttribute(`data-${error}`) || error;
   if (feedback === null || !classie.has(feedback, 'form-control-feedback')) {
@@ -133,7 +133,7 @@ function addError (element, error) {
   classie.addClass(element, 'form-control-danger');
 }
 
-function subError (element) {
+function subError(element) {
   const feedback = element.nextElementSibling;
   if (feedback !== null && classie.has(feedback, 'form-control-feedback')) {
     feedback.remove();
@@ -170,7 +170,7 @@ function subError (element) {
   const ref = localStorage.getItem('ref') || '';
 
   // For switching between login , register ,invite
-  function formLink (event) {
+  function formLink(event) {
     if (
       (login === false && event.target.id === 'link_login') ||
       (login === true && event.target.id === 'link_register')
@@ -186,11 +186,12 @@ function subError (element) {
     }
   }
 
-  function submitForm (event) {
+  function submitForm(event) {
     // Login
     if (login === true) {
       sendRequest(
-        'auth', {
+        'auth',
+        {
           user: username.value,
           password: password.value
         },
@@ -227,11 +228,12 @@ function subError (element) {
     }
   }
 
-  function register (token) {
+  function register(token) {
     ctoken = token;
     // Send request to /register
     sendRequest(
-      'register', {
+      'register',
+      {
         username: username.value,
         password: password.value,
         email: email.value,
@@ -240,6 +242,8 @@ function subError (element) {
       response => {
         // Get success response
         successMsg.innerHTML = successData.getAttribute('data-register_success');
+        login = !login;
+        classie.toggle(document.getElementById('form'), 'login');
       },
       error => {
         if (fieldErrors.includes(error)) {
@@ -263,10 +267,11 @@ function subError (element) {
     );
   }
 
-  function inviteForm (event) {
+  function inviteForm(event) {
     // Send request to /invite code
     sendRequest(
-      'invite', {
+      'invite',
+      {
         email: document.getElementById('inviteEmail').value
       },
       response => {
@@ -367,7 +372,7 @@ function subError (element) {
     };
   }
 
-  function closeModals (e) {
+  function closeModals(e) {
     for (const md of modals) {
       classie.removeClass(md, 'active');
     }
