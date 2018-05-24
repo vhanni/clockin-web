@@ -1,21 +1,8 @@
-import Vue from 'vue';
-
 const state = {
   alerts: [],
   alertIndex: 1
 };
-const actions = {
-  addAlert: (context, data) => {
-    // Add alert
-    const id = context.state.alertIndex;
-    context.commit('addAlert', { id, ...data });
 
-    // Remove alert afer 5 seconds
-    setTimeout(() => {
-      context.commit('removeAlert', id);
-    }, 5000);
-  }
-};
 const mutations = {
   addAlert: (state, data) => {
     state.alerts.push(data);
@@ -30,9 +17,22 @@ const mutations = {
   }
 };
 
+const actions = {
+  addAlert: (context, data) => {
+    // Add alert
+    const id = context.state.alertIndex;
+    context.commit('addAlert', { id, ...data });
+
+    // Remove alert afer 5 seconds
+    setTimeout(() => {
+      context.commit('removeAlert', id);
+    }, 5000);
+  }
+};
+
 export default {
   namespaced: true,
   state,
-  actions,
-  mutations
+  mutations,
+  actions
 };

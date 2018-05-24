@@ -1,11 +1,12 @@
 <template>
   <modal 
-    :title="$t('settings.interface.title')" 
-    :show-footer="true">
+    :title="$t('settings.interface.title')"
+    :show-footer="true"
+    size="md">
     <b-container fluid>
       <b-row>
         <b-col cols="12">
-          <fieldset class="form-group col-12">
+          <fieldset class="form-group">
             <legend>{{ $t('gen.universal') }}</legend>
             <b-form-group v-if="themes">
               <label for="themes">{{ $t('settings.interface.theme') }}:</label>

@@ -6,7 +6,7 @@ const AxiosInit = axios => {
   });
   instance.defaults.headers.post['Content-Type'] = 'application/json';
   instance.interceptors.request.use(config => {
-    if (localStorage.token) {
+    if (localStorage.token && !config.url.includes('https://en.gravatar.com')) {
       config.headers['Authorization'] = `Bearer ${localStorage.token}`;
     }
     return config;

@@ -47,12 +47,10 @@ export default {
       // Are translations cached already?
       if (!this.$i18n.messages[language]) {
         // If not, load them and save it
-        this.axios
-          .get(Vue.config.site_url + 'static/locales/' + language + '.json')
-          .then(res => {
-            this.$i18n.setLocaleMessage(language, res.data);
-            this.setLanguage(language);
-          });
+        this.axios.get(Vue.config.site_url + 'static/locales/' + language + '.json').then(res => {
+          this.$i18n.setLocaleMessage(language, res.data);
+          this.setLanguage(language);
+        });
       } else {
         this.setLanguage(language);
       }

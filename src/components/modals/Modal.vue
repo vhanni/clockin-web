@@ -1,15 +1,18 @@
 <template>
   <b-modal 
-    id="modal" 
+    :id="id"
     :size="size" 
-    :ok-only="okOnly" 
-    :hide-footer="!showFooter" 
-    :ok-title="$t(okTitle)" 
-    :close-title="$t('gen.cancel')" 
-    :ok-disabled="okDisabled" 
-    no-auto-focus 
-    @hidden="hideModal" 
-    @hide="buttonClick" 
+    :ok-only="okOnly"
+    :no-fade="nofade" 
+    :hide-footer="!showFooter"
+    :ok-disabled="okDisabled"
+    :cancel-disabled="cancelDisabled"
+    :cancel-title="$t('gen.cancel')"
+    :ok-title="$t(okTitle)"
+    :no-enforce-focus="nofocus"
+    :return-focus="returnfocus"
+    @hide="buttonClick"
+    @hidden="onHidden"
     @cancel="$emit('cancel', $event)">
     <template slot="modal-title"><slot name="title">{{ title }}</slot></template>
     <div v-if="error">{{ $t(error) }}</div>
@@ -19,25 +22,29 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      default: 'modal'
+    },
     title: {
       type: String,
-      default: 'Modal'
+      default: ''
     },
     error: {
       type: String,
-      default: 'Error'
+      default: ''
     },
     showFooter: {
       type: Boolean,
-      default: true
+      default: false
     },
     okDisabled: {
       type: Boolean,
-      default: true
+      default: false
     },
     okOnly: {
       type: Boolean,
-      default: true
+      default: false
     },
     okTitle: {
       type: String,
@@ -45,7 +52,19 @@ export default {
     },
     size: {
       type: String,
-      default: 'lg'
+      default: 'md'
+    },
+    nofade: {
+      type: Boolean,
+      default: true
+    },
+    nofocus: {
+      type: Boolean,
+      default: true
+    },
+    cancelDisabled: {
+      type: Boolean,
+      default: false
     }
   },
   mounted() {
@@ -53,12 +72,11 @@ export default {
   },
   methods: {
     buttonClick(e) {
-      // If we pressed OK button, we want to check if we need to process a form
       if (e.isOK === true) {
-        this.$emit('ok', e);
+        this.$root.$emit('ok', e);
       }
     },
-    hideModal(e) {
+    onHidden(e) {
       this.$router.push('/timein');
     }
   }
@@ -70,7 +88,7 @@ export default {
   background-color: $really-black;
 }
 .modal-open .modal {
-  display: block;
+  display: block !important;
   z-index: 1061;
 }
 </style>

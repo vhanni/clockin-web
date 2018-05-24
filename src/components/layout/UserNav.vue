@@ -1,12 +1,14 @@
 <template>
-  <b-nav-item-dropdown 
-    class="dd-right" 
-    right>
+  <b-nav-item-dropdown right>
     <template slot="text">
+      <avatar 
+        :avatar="avatar" 
+        :force-show="true" />
       <span 
         v-if="currentUser" 
         id="username">{{ currentUser.username }}</span>
     </template>
+    <b-dropdown-item to="/settings/avatar">{{ $t('gen.settings') }}</b-dropdown-item>
     <b-dropdown-item @click="logout"> {{ $t('gen.logout') }} </b-dropdown-item>
   </b-nav-item-dropdown>
 </template>
@@ -16,20 +18,20 @@ export default {
   props: {
     showName: {
       type: Boolean,
-      default: false
+      default: false,
     }
   },
   computed: {
-    ...mapGetters('auth', ['currentUser'])
+    ...mapGetters('auth', ['currentUser']),
   },
   methods: {
-    logout() {
+    logout: function() {
       this.$store.dispatch('auth/logout').then(() => {
         this.$store.dispatch('clearhistory').then(() => {
           window.location.replace('/');
         });
       });
-    }
+    },
   }
 };
 </script>

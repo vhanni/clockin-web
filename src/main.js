@@ -9,16 +9,18 @@ import VueI18n from 'vue-i18n';
 import messages from './../static/locales/en';
 import BootstrapVue from 'bootstrap-vue';
 import VueProgressBar from 'vue-progressbar';
+import UtilFunctions from './utils/UtilFunctions';
+import Gravatar from 'vue-gravatar';
 
 // config
 Vue.config.productionTip = false;
 Vue.config.site_url = process.env.SITE_URL;
-
 Vue.use(VueAxios, axios);
 Vue.axios = AxiosInit(Vue.axios);
 
+Vue.component('v-gravatar', Gravatar);
+Vue.use(UtilFunctions);
 Vue.use(BootstrapVue);
-
 // icon fontawesome
 import 'vue-awesome/icons/github';
 import 'vue-awesome/icons/sliders';
@@ -48,8 +50,8 @@ Vue.axios.interceptors.response.use(
     if (
       response.config.url.substr(-4) === '.css' ||
       typeof response.data.gen !== 'undefined' ||
-      (typeof response.data.success !== 'undefined' &&
-        response.data.success === true)
+      (typeof response.data.entry !== 'undefined' && response.data.entry !== null) ||
+      (typeof response.data.success !== 'undefined' && response.data.success === true)
     ) {
       // If this isn't first load of app, finish progress bar
       if (!window.firstLoad) {
@@ -71,16 +73,14 @@ Vue.axios.interceptors.response.use(
       typeof err.response !== 'undefined' &&
       typeof err.response.data !== 'undefined' &&
       typeof err.response.data.error !== 'undefined' &&
-      (err.response.data.error === 'token_invalid' ||
-        err.response.data.error === 'TOKEN_EXPIRED')
+      (err.response.data.error === 'token_invalid' || err.response.data.error === 'TOKEN_EXPIRED')
     ) {
-      // Log user out
-      store.dispatch('auth/guest', true);
-      store.dispatch('clearhistory', true);
+      store.dispatch('auth/logout').then(() => {
+        store.dispatch('clearhistory').then(() => {
+          window.location.replace('/');
+        });
+      });
     }
-    setTimeout(() => {
-      window.location.replace('/');
-    }, 3500);
   }
 );
 // Languages
@@ -97,7 +97,7 @@ const i18n = new VueI18n({
 router.beforeEach((to, from, next) => {
   let timeout = 0;
 
-  function nextPath () {
+  function nextPath() {
     // If we don't need auth, just go already
     if (!to.meta.auth) {
       next();

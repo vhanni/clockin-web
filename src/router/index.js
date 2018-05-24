@@ -4,7 +4,7 @@ import Timetable from '@/components/layout/Timetable';
 
 import SettingsInterface from '@/components/modals/SettingsInterface';
 import SettingsPayslip from '@/components/modals/SettingsPayslip';
-
+import SettingsUser from '@/components/modals/SettingsUser';
 Vue.use(Router);
 export default new Router({
   mode: 'history',
@@ -26,6 +26,12 @@ export default new Router({
         {
           path: 'settings/payslip',
           component: SettingsPayslip,
+          meta: { auth: false }
+        },
+        {
+          path: 'settings/:currentView',
+          component: SettingsUser,
+          props: true,
           meta: { auth: false }
         }
       ]

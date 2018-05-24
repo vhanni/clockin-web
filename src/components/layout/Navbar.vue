@@ -6,7 +6,7 @@
     <b-link 
       class="navbar-brand" 
       to="/timein">
-      <span>Timezone</span>
+      <span>ClockIn</span>
     </b-link>
     <b-navbar-toggle target="nav_collapse"/>
     <b-collapse 
@@ -27,18 +27,18 @@ import UserNav from './UserNav';
 export default {
   components: {
     LanguageSwitch,
-    UserNav
+    UserNav,
   },
   props: {
     mobile: {
       type: Boolean,
-      default:false
+      default: false,
     },
     tablet: {
       type: Boolean,
-      default:false
-    }
-  }
+      default: false,
+    },
+  },
 };
 </script>
 <style lang="scss">

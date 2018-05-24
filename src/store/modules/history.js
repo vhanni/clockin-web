@@ -6,15 +6,15 @@ const state = {
   history: !!localStorage.getItem('token')
 };
 
-const mutations = {
-  [MutationTypes.HISTORY](state, history) {
-    state.history = history;
-  }
-};
-
 const getters = {
   currentHistory(state) {
     return state.history;
+  }
+};
+
+const mutations = {
+  [MutationTypes.HISTORY](state, history) {
+    state.history = history;
   }
 };
 
@@ -31,26 +31,30 @@ const addcell = history =>
     }
     return cv;
   });
+
 const actions = {
   gethistory({ commit }, history) {
     return new Promise((resolve, reject) => {
       if (localStorage.getItem('token') && !history.history) {
-        Vue.axios.get('me/history').then(({ data }) => {
-          if (data.pending.timein) {
-            data.pending.timeout = '---';
-            data.history.push(data.pending);
-          } else {
-            data.history.push({
-              username: '---',
-              timein: '---',
-              timeout: '---',
-              late: '---'
-            });
-          }
-          data.history = addcell(data.history).reverse();
-          commit(MutationTypes.HISTORY, data);
-          resolve();
-        });
+        Vue.axios
+          .get('me/history')
+          .then(({ data }) => {
+            if (data.pending.timein) {
+              data.pending.timeout = '---';
+              data.history.push(data.pending);
+            } else {
+              data.history.push({
+                username: '---',
+                timein: '---',
+                timeout: '---',
+                late: '---'
+              });
+            }
+            data.history = addcell(data.history).reverse();
+            commit(MutationTypes.HISTORY, data);
+            resolve();
+          })
+          .catch();
       } else {
         resolve();
       }
@@ -95,6 +99,6 @@ const actions = {
 export default {
   state,
   getters,
-  actions,
-  mutations
+  mutations,
+  actions
 };

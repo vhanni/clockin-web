@@ -6,7 +6,6 @@ import auth from './modules/auth';
 import history from './modules/history';
 import alert from './modules/alert';
 import interfaceSettings from './modules/interface';
-import payslipSettings from './modules/payslip';
 import language from './modules/language';
 
 Vue.use(Vuex);
@@ -18,7 +17,6 @@ export const store = new Vuex.Store({
     history,
     alert,
     interfaceSettings,
-    payslipSettings,
     language
   },
   // Save some states in localStorage as settings
@@ -27,6 +25,7 @@ export const store = new Vuex.Store({
       key: 'settings',
       paths: [
         'auth.user',
+        'auth.userinfo',
         'history.history',
         'interfaceSettings.theme',
         'language.currentLanguage'

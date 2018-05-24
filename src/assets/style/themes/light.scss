@@ -10,29 +10,27 @@
 // $pink:   #ff5b77 !default;
 // $purple: #613d7c !default;
 
-
 // Reassign color vars to semantic color scheme
-$brand-primary:             #00b0ef;
+$brand-primary: #00b0ef;
 // $brand-success:             $green !default;
 // $brand-info:                $teal !default;
 // $brand-warning:             $orange !default;
 // $brand-danger:              $red !default;
 // $brand-inverse:             $gray-dark !default;
 
-$body-bg:       #d9e0e5;
-$body-color:    #727376;
+$body-bg: #d9e0e5;
+$body-color: #727376;
 
-$box-bg: #FFF;
-$award-bg: darken($box-bg, 2%) !default;
+$box-bg: #fff;
 $tab-inactive-bg: #e6eaed;
 
 $color-less-focus: lighten($body-color, 15%) !default;
 $color-some-focus: darken($box-bg, 12%) !default;
 
-$btn-primary-bg:  $brand-primary;
-$btn-primary-color: #FFF;
+$btn-primary-bg: $brand-primary;
+$btn-primary-color: #fff;
 
-$logo-url:  url(/static/img/logo.png);
+$logo-url: url(/static/img/logo.png);
 $logo-color: #a9abae;
 
 $stripe-bg: $body-bg;

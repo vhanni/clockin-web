@@ -17,7 +17,7 @@
   </div>
 </template>
 <script>
-import { mapState } from 'vuex';
+import { mapGetters, mapState } from 'vuex';
 import Navbar from '@/components/layout/Navbar';
 import Foot from '@/components/layout/Foot';
 export default {
@@ -34,16 +34,14 @@ export default {
     };
   },
   computed: {
-    ...mapState('interfaceSettings', ['theme'])
+    ...mapState('interfaceSettings', ['theme']),
+    ...mapGetters('auth', ['currentUser'])
   },
   created() {
     // window first load initiate progress
     this.$Progress.start();
     this.checkCurrentLogin();
-    if (
-      this.theme.toLowerCase() !== 'default' &&
-      typeof window.themes !== 'undefined'
-    ) {
+    if (this.theme.toLowerCase() !== 'default' && typeof window.themes !== 'undefined') {
       this.$store.dispatch('interfaceSettings/updateTheme', this.theme);
     }
   },
@@ -56,18 +54,19 @@ export default {
   },
   methods: {
     checkCurrentLogin() {
-      if (localStorage.getItem('token') == null) {
+      const self = this;
+      if (localStorage.getItem('token') == null && localStorage.getItem('token') == undefined) {
         localStorage.clear();
         return (document.location.href = '/');
       } else {
-        this.$store
-          .dispatch('auth/getuser', this.$Progress)
+        self.$store
+          .dispatch('auth/getuser', self.$Progress)
           .then(() => {
-            this.$router.push(this.$route.fullPath || 'timein');
+            self.$router.push(self.$route.fullPath || 'timein');
           })
           .catch(() => {
-            if (this.publicpath.includes(this.$route.path)) {
-              this.$router.push('/');
+            if (self.publicpath.includes(self.$route.path)) {
+              self.$router.push('/');
             }
           });
       }
